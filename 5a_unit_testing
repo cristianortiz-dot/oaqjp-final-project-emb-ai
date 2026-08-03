@@ -1,0 +1,28 @@
+"""Pruebas unitarias para la función emotion_detector."""
+import unittest
+from EmotionDetection.emotion_detection import emotion_detector
+
+
+class TestEmotionDetection(unittest.TestCase):
+    """Valida que cada frase de prueba arroje la emoción dominante esperada."""
+
+    def test_emotion_detector(self):
+        """Comprueba las 5 emociones dominantes: joy, anger, disgust, sadness, fear."""
+        result_joy = emotion_detector("I am glad this happened")
+        self.assertEqual(result_joy['dominant_emotion'], 'joy')
+
+        result_anger = emotion_detector("I am really mad about this")
+        self.assertEqual(result_anger['dominant_emotion'], 'anger')
+
+        result_disgust = emotion_detector("I feel disgusted just hearing about this")
+        self.assertEqual(result_disgust['dominant_emotion'], 'disgust')
+
+        result_sadness = emotion_detector("I am so sad about this")
+        self.assertEqual(result_sadness['dominant_emotion'], 'sadness')
+
+        result_fear = emotion_detector("I am really afraid that this will happen")
+        self.assertEqual(result_fear['dominant_emotion'], 'fear')
+
+
+if __name__ == '__main__':
+    unittest.main()
